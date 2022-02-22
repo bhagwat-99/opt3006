@@ -50,11 +50,11 @@ void main()
 	ioctl(file, I2C_SLAVE, SLAVE_ADDR);
 
     unsigned char reg[1] = {0};
-    reg[0]=0x00;
     unsigned char data[2] = {0};
     __uint16_t reg_data;
 
     //reading 2 bytes from 0x00
+    reg[0]=0x00 | 0x80; // to read multiple address in one command need to or with 0x80 to auto increment address
     write(file, reg, 1);
     if(read(file, data, 2) != 2)
 	{
