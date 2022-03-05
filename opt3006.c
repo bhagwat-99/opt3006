@@ -134,6 +134,8 @@ int main()
 
     i2c_write(slave_address, 0x01, 0xCE, 0X10 );//writing configuration register
 
+    sleep(1);
+
     __uint16_t reg_value = i2c_read(slave_address, 0x00);//reading result register
 
     float Lux = calculate_lux(reg_value);
